@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,13 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body>
+  <div class="progress" aria-hidden="true"></div>
   <a class="skip" href="#projects">Skip to projects</a>
 
   <header class="hero">
     <div class="hero__intro">
-      <h1>Jan Zheng</h1>
+      <h1><span class="h1__line">Jan</span> <span class="h1__line">Zheng</span></h1>
       <p class="hero__lede">I design games and build the data tools around them. Adelaide-based, with full working rights in Australia.</p>
       <ul class="links" aria-label="Profiles and contact">
         <li><a href="mailto:zhengjian.au@gmail.com">zhengjian.au@gmail.com</a></li>
@@ -25,6 +27,7 @@
       </ul>
     </div>
 
+    <div class="sheet-wrap">
     <aside class="sheet" aria-label="Character sheet">
       <p class="sheet__title">Multiclass</p>
       <div class="sheet__class sheet__class--game">
@@ -41,6 +44,7 @@
         <div><dt>Builds in</dt><dd>Godot, Unreal Engine 5, Git, Claude Code</dd></div>
       </dl>
     </aside>
+    </div>
   </header>
 
   <main>
@@ -48,6 +52,7 @@
       <div class="section__head">
         <h2 id="projects-h">Projects</h2>
         <div class="filter" role="group" aria-label="Filter projects">
+          <span class="filter__thumb" aria-hidden="true"></span>
           <button type="button" data-filter="all" aria-pressed="true">All</button>
           <button type="button" data-filter="game" aria-pressed="false">Game design</button>
           <button type="button" data-filter="data" aria-pressed="false">Data &amp; automation</button>
@@ -151,7 +156,7 @@
     <section id="experience" class="section" aria-labelledby="experience-h">
       <h2 id="experience-h">Experience</h2>
       <ol class="timeline">
-        <li>
+        <li class="is-current">
           <p class="when">Mar 2025 – present</p>
           <div>
             <h3>Restaurant Manager, Hungry Jack's</h3>

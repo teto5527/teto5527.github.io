@@ -189,3 +189,169 @@ a:hover { text-decoration-color: currentColor; }
   .timeline > li { grid-template-columns: 1fr; gap: .25rem; }
   .figures { gap: 1.5rem; }
 }
+
+/* ===== Motion ===== */
+:root {
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+/* Scroll progress */
+.progress {
+  position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 20;
+  background: linear-gradient(90deg, var(--game), var(--data));
+  transform-origin: 0 50%;
+  transform: scaleX(var(--progress, 0));
+}
+
+/* Hero backdrop: two slow-drifting class glows */
+.hero { position: relative; isolation: isolate; }
+.hero::before, .hero::after {
+  content: ""; position: absolute; z-index: -1; border-radius: 50%;
+  filter: blur(70px); opacity: .35; pointer-events: none;
+}
+.hero::before { width: 420px; height: 420px; right: 8%; top: 10%; background: var(--game-soft); background: radial-gradient(circle, #c9b3ea, transparent 70%); animation: drift 18s ease-in-out infinite alternate; }
+.hero::after  { width: 360px; height: 360px; right: 30%; bottom: 0; background: radial-gradient(circle, #a6dcd3, transparent 70%); animation: drift 22s ease-in-out infinite alternate-reverse; }
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-60px, 40px) scale(1.15); }
+}
+
+/* Opening sequence */
+.js .h1__line { display: inline-block; animation: rise .9s var(--ease-out) both; }
+.js .h1__line:nth-child(2) { animation-delay: .12s; }
+.js .hero__lede { animation: rise .9s var(--ease-out) .3s both; }
+.js .links li { animation: rise .7s var(--ease-out) both; }
+.js .links li:nth-child(1) { animation-delay: .42s; }
+.js .links li:nth-child(2) { animation-delay: .48s; }
+.js .links li:nth-child(3) { animation-delay: .54s; }
+.js .links li:nth-child(4) { animation-delay: .60s; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Character sheet is dealt in like a card, then tilts with the pointer */
+.sheet-wrap { perspective: 1000px; }
+.js .sheet { animation: deal 1s var(--ease-out) .35s both; }
+@keyframes deal {
+  from { opacity: 0; transform: translate(60px, 30px) rotate(7deg) scale(.92); }
+  to   { opacity: 1; transform: none; }
+}
+.sheet {
+  position: relative; overflow: hidden;
+  transform-style: preserve-3d;
+  transition: box-shadow .3s var(--ease-out);
+}
+.sheet.is-tilting {
+  animation: none;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  box-shadow: 0 1px 0 var(--line), 0 30px 60px -30px rgba(28, 34, 51, .55);
+}
+.sheet.is-settling { transition: transform .6s var(--ease-out), box-shadow .3s; }
+.sheet::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, .55), transparent 45%);
+  opacity: 0; transition: opacity .3s;
+  mix-blend-mode: soft-light;
+}
+.sheet.is-tilting::after { opacity: 1; }
+
+/* Class bars draw down after the card lands */
+.sheet__class { position: relative; border-left: 0; padding-left: calc(1rem + 4px); }
+.sheet__class::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 2px;
+  background: var(--game); transform-origin: top;
+}
+.sheet__class--data::before { background: var(--data); }
+.js .sheet__class::before { animation: bar .7s var(--ease-out) both; }
+.js .sheet__class--game::before { animation-delay: 1.05s; }
+.js .sheet__class--data::before { animation-delay: 1.2s; }
+@keyframes bar { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+/* Growing link underlines */
+.links a, .project__links a, .footer a, .prose a, .coursework a, .project p a {
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat,
+              linear-gradient(var(--line), var(--line)) 0 100% / 100% 1px no-repeat;
+  transition: background-size .35s var(--ease-out), color .2s;
+  background-size: 0% 2px, 100% 1px;
+  padding-bottom: 1px;
+}
+.links a:hover, .project__links a:hover, .footer a:hover, .prose a:hover, .coursework a:hover, .project p a:hover,
+.links a:focus-visible, .project__links a:focus-visible { background-size: 100% 2px, 100% 1px; }
+
+/* Filter: sliding thumb behind the pressed button */
+.filter { position: relative; }
+.filter button { position: relative; z-index: 1; }
+.filter button[aria-pressed="true"],
+.filter button[data-filter="game"][aria-pressed="true"],
+.filter button[data-filter="data"][aria-pressed="true"] { background: none; color: #fff; }
+.no-js .filter button[aria-pressed="true"] { background: var(--ink); }
+.filter__thumb {
+  position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 0; width: 0;
+  border-radius: 999px; background: var(--ink);
+  transform: translateX(var(--thumb-x, 4px)); width: var(--thumb-w, 0);
+  transition: transform .45s var(--ease-spring), width .45s var(--ease-spring), background-color .3s;
+}
+.filter[data-active="game"] .filter__thumb { background: var(--game); }
+.filter[data-active="data"] .filter__thumb { background: var(--data); }
+
+/* Project cards: hover lift, filter in/out */
+.project {
+  transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), border-color .35s, opacity .25s;
+}
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 40px -28px rgba(28, 34, 51, .5);
+  border-color: color-mix(in srgb, var(--game) 35%, var(--line));
+}
+.project[data-tags="data"]:hover { border-color: color-mix(in srgb, var(--data) 40%, var(--line)); }
+.project.is-leaving { opacity: 0; transform: scale(.96); }
+.project.is-entering { animation: pop .5s var(--ease-spring) both; }
+@keyframes pop {
+  from { opacity: 0; transform: translateY(14px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+.project__media video { transition: transform .6s var(--ease-out); }
+.figures dd { font-variant-numeric: tabular-nums; }
+
+/* Scroll reveal (only when JS is running) */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); transition-delay: calc(var(--i, 0) * 70ms); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+.js .project.reveal.is-visible:hover { transform: translateY(-4px); transition-delay: 0s; }
+
+/* Timeline rail draws as it comes into view; current job pulses */
+.timeline { position: relative; }
+.timeline > li { position: relative; padding-left: 1.75rem; }
+.timeline > li::before {
+  content: ""; position: absolute; left: 0; top: 1.95rem; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--muted);
+}
+.timeline > li:first-child::before { top: .45rem; }
+.timeline > li.is-current::before { border-color: var(--game); background: var(--game); animation: pulse 2.4s ease-out infinite; }
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--game) 45%, transparent); }
+  70%  { box-shadow: 0 0 0 10px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.timeline::before {
+  content: ""; position: absolute; left: 6px; top: .6rem; bottom: 1rem; width: 1px;
+  background: linear-gradient(var(--game), var(--data));
+  transform-origin: top; transform: scaleY(var(--rail, 1));
+}
+.js .timeline::before { --rail: 0; transition: transform 1.4s var(--ease-out); }
+.js .timeline.is-visible::before { --rail: 1; }
+
+@media (max-width: 820px) {
+  .hero::before, .hero::after { opacity: .25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; }
+  .js .timeline::before { --rail: 1; }
+  .hero::before, .hero::after { animation: none; }
+  .project:hover { transform: none; }
+}
+.js .sheet.is-dealt { animation: none; }
+.js .project.reveal.is-leaving { opacity: 0; transform: scale(.96); transition-delay: 0s; }
