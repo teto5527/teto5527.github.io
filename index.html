@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jan Zheng — Game design, data and automation</title>
+  <meta name="description" content="Portfolio of Jan Zheng, an Adelaide-based game designer and builder of data and automation tools. Baldur's Gate 3 mods with 976K downloads, live MOBA design at Lost Game Studio, Python and SQL projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#projects">Skip to projects</a>
+
+  <header class="hero">
+    <div class="hero__intro">
+      <h1>Jan Zheng</h1>
+      <p class="hero__lede">I design games and build the data tools around them. Adelaide-based, with full working rights in Australia.</p>
+      <ul class="links" aria-label="Profiles and contact">
+        <li><a href="mailto:zhengjian.au@gmail.com">zhengjian.au@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/zhengjan/">LinkedIn</a></li>
+        <li><a href="https://github.com/teto5527">GitHub</a></li>
+        <li><a href="https://mod.io/u/zhengjan">mod.io</a></li>
+      </ul>
+    </div>
+
+    <aside class="sheet" aria-label="Character sheet">
+      <p class="sheet__title">Multiclass</p>
+      <div class="sheet__class sheet__class--game">
+        <h2>Game designer</h2>
+        <p>Designed live content for a DotA-based game with 4 million registered players. Now building Ember Chess, my own roguelike, and my Baldur's Gate 3 mods have 976,000 downloads.</p>
+      </div>
+      <div class="sheet__class sheet__class--data">
+        <h2>Data &amp; automation</h2>
+        <p>Python and SQL tools, player and sales analytics, and working software built with AI coding agents. Google Data Analytics certified.</p>
+      </div>
+      <dl class="sheet__stats">
+        <div><dt>Speaks</dt><dd>English, Mandarin</dd></div>
+        <div><dt>Writes</dt><dd>Python, SQL, C++, Lua, Java, JavaScript</dd></div>
+        <div><dt>Builds in</dt><dd>Godot, Unreal Engine 5, Git, Claude Code</dd></div>
+      </dl>
+    </aside>
+  </header>
+
+  <main>
+    <section id="projects" class="section" aria-labelledby="projects-h">
+      <div class="section__head">
+        <h2 id="projects-h">Projects</h2>
+        <div class="filter" role="group" aria-label="Filter projects">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="game" aria-pressed="false">Game design</button>
+          <button type="button" data-filter="data" aria-pressed="false">Data &amp; automation</button>
+        </div>
+      </div>
+
+      <div class="projects">
+        <article class="project project--feature project--lead" data-tags="game data">
+          <div class="project__media">
+            <video controls preload="none" playsinline poster="media/ember-chess-poster.jpg" aria-label="Ember Chess trailer">
+              <source src="media/ember-chess-trailer.mp4" type="video/mp4">
+              <a href="media/ember-chess-trailer.mp4">Download the Ember Chess trailer</a>
+            </video>
+          </div>
+          <div class="project__body">
+            <div class="project__meta"><span class="tag tag--game">Game design</span><span class="tag tag--data">Data</span> Sep 2026 – present, solo</div>
+            <h3>Ember Chess</h3>
+            <p>A roguelike deck-builder where you draft heroes, spells and items, then watch them fight on their own across a 4×4 board. I designed it and built it alone in Godot 4.7, working with AI coding tools, from the first commit in September 2026 to version 1.33a two months later.</p>
+            <p>All game content lives in JSON data files, edited through a Content Studio tool I built for balancing. The game supports English and Simplified Chinese, keyboard and controller, and ships each version with release notes and automated regression checks.</p>
+            <dl class="figures">
+              <div><dt>Heroes</dt><dd>70</dd></div>
+              <div><dt>Spells and items</dt><dd>62</dd></div>
+              <div><dt>Blessings</dt><dd>103</dd></div>
+              <div><dt>Commits</dt><dd>171</dd></div>
+            </dl>
+            <p class="project__links">Source code available on request.</p>
+          </div>
+        </article>
+
+        <article class="project project--feature" data-tags="game">
+          <div class="project__meta"><span class="tag tag--game">Game design</span> 2024 – present</div>
+          <h3>Baldur's Gate 3 mods</h3>
+          <p>Nine mods for Baldur's Gate 3, written in XML and the game's scripting language. The most popular, SpellbladeSchool, has 530,000 unique downloads on its own, and the mods hold an average rating of 100%.</p>
+          <dl class="figures">
+            <div><dt>Downloads</dt><dd>976K</dd></div>
+            <div><dt>Subscribers</dt><dd>96K</dd></div>
+            <div><dt>Likes</dt><dd>1.2K</dd></div>
+          </dl>
+          <p class="project__links"><a href="https://mod.io/u/zhengjan">All mods on mod.io</a> <a href="https://github.com/teto5527/BG3_SubClass_Nightingale">Nightingale source</a> <a href="https://github.com/teto5527/Rogue_Perfection">Rogue Perfection source</a></p>
+        </article>
+
+        <article class="project project--feature" data-tags="game">
+          <div class="project__meta"><span class="tag tag--game">Game design</span> 2018 – 2019, Lost Game Studio</div>
+          <h3>DotA IM seasonal events</h3>
+          <p>Event modes for DotA IM, a DotA-based multiplayer game played by around 80% of China's DotA 1 community. I led the Lunar New Year event, a Diablo-style RPG mode built on MOBA heroes that trialled in-game purchases and dynamic difficulty. Before that I helped build the Christmas event, a defence-and-action mode launched alongside a new skin line.</p>
+          <p class="project__links"><a href="https://www.09game.com/html/2019/news_0124/699.html" hreflang="zh">Lunar New Year event page</a> <a href="https://www.douyu.com/cms/detail/9717.shtml" hreflang="zh">Douyu speed-run promotion</a> <a href="https://www.09game.com/html/2018/news_1220/675.html" hreflang="zh">Christmas event page</a> <a href="https://www.09game.com/html/2019/game_0620/856.html" hreflang="zh">DotA IM championship</a></p>
+        </article>
+
+        <article class="project" data-tags="game data">
+          <div class="project__meta"><span class="tag tag--game">Game design</span><span class="tag tag--data">Data</span> 2026</div>
+          <h3>Inn next to the Dungeon</h3>
+          <p>A Python prototype of a fantasy inn management game. Players buy stock, set prices and serve adventurers whose purchases follow their needs. Campaigns save to SQLite, and the rules are covered by pytest.</p>
+          <p class="project__links"><a href="https://github.com/teto5527/inn-next-to-dungeon">Source on GitHub</a></p>
+        </article>
+
+        <article class="project" data-tags="data">
+          <div class="project__meta"><span class="tag tag--data">Data</span> 2026</div>
+          <h3>Game Analytics CLI</h3>
+          <p>A command-line tool that queries a relational SQLite database of players, matches and sessions. It produces leaderboards, per-player statistics and win rates.</p>
+          <p class="project__links"><a href="https://github.com/teto5527/game-analytics-2026">Source on GitHub</a></p>
+        </article>
+
+        <article class="project" data-tags="game">
+          <div class="project__meta"><span class="tag tag--game">Game design</span> 2023, UniSA team project</div>
+          <h3>Cursed Depths</h3>
+          <p>A roguelike RPG made by a student team in Unreal Engine 5.3. I built the UI and the inventory system, including how items interact.</p>
+          <p class="project__links"><a href="https://drive.google.com/file/d/1RFjjizMwDqaAzZHY6OKU0kzCLIXD4qZO/view">Watch the trailer</a></p>
+        </article>
+
+        <article class="project" data-tags="game">
+          <div class="project__meta"><span class="tag tag--game">Game design</span> 2023, solo</div>
+          <h3>Turn-based strategy game</h3>
+          <p>A turn-based strategy game I designed and built on my own in Unreal Engine 5.1, using Blueprints and C++.</p>
+          <p class="project__links"><a href="https://drive.google.com/file/d/1A0jW6kWd_7_fQLeBqYem5wsE5UUiQc76/view">Watch the trailer</a></p>
+        </article>
+
+        <article class="project" data-tags="game data">
+          <div class="project__meta"><span class="tag tag--game">Game design</span><span class="tag tag--data">Data</span> 2022</div>
+          <h3>Civilization VI balance mods</h3>
+          <p>Steam Workshop mods that rebalance Civilization VI. I used SQL to adjust the game's data tables and Lua for new behaviour, tuning values against how the game actually played.</p>
+          <p class="project__links"><a href="https://github.com/teto5527/civ6_mod">Source on GitHub</a></p>
+        </article>
+
+        <article class="project" data-tags="data">
+          <div class="project__meta"><span class="tag tag--data">Automation</span> 2023, UniSA team project</div>
+          <h3>Restaurant ordering system</h3>
+          <p>An ordering and member-discount system for a restaurant, built in HTML5, JavaScript and SQL. I was the team's Scrum Master, running the sprints in Jira and Git.</p>
+          <p class="project__links"><a href="https://github.com/teto5527/PS_Softwhere">Source on GitHub</a></p>
+        </article>
+
+        <article class="project project--wide" data-tags="data">
+          <div class="project__meta"><span class="tag tag--data">Automation</span> 2026</div>
+          <h3>This website</h3>
+          <p>Built with Claude Code, an AI coding agent. It read 78 versions of my resume, reconciled the dates and figures that disagreed, checked them against LinkedIn and mod.io, and drafted this page. I made the final call on every fact. <a href="#how">How it was built</a></p>
+          <p class="project__links"><a href="https://github.com/teto5527/teto5527.github.io">Source on GitHub</a></p>
+        </article>
+      </div>
+
+      <p class="coursework">Also from university: a multitasking timer in Qt for Python (<a href="https://gitlab.com/OSAMPERSANDTC/assignment-01">GitLab</a>), a C++ card game (<a href="https://github.com/teto5527/SushiSlam">SushiSlam</a>), a 2D top-down game in Java and LibGDX (<a href="https://github.com/teto5527/AGD_Assignment">GitHub</a>), and a hospital patient alert system in C++.</p>
+    </section>
+
+    <section id="experience" class="section" aria-labelledby="experience-h">
+      <h2 id="experience-h">Experience</h2>
+      <ol class="timeline">
+        <li>
+          <p class="when">Mar 2025 – present</p>
+          <div>
+            <h3>Restaurant Manager, Hungry Jack's</h3>
+            <p class="where">OTR franchise, Aberfoyle Park, Adelaide. Joined as Assistant Restaurant Manager and was promoted.</p>
+            <ul>
+              <li>Run a high-volume restaurant serving around 4,000 customers a week.</li>
+              <li>Used weekly sales and labour data to raise sales per labour hour from 95 to 107 and bring labour cost from over 40% of sales to about 34%.</li>
+              <li>Handle rostering, stock ordering, waste control and food safety compliance, and coach the crew and shift supervisors.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <p class="when">Jan 2019 – Oct 2019</p>
+          <div>
+            <h3>Game Designer, Lost Game Studio</h3>
+            <p class="where">Ningbo, China</p>
+            <ul>
+              <li>Designed and balanced heroes, skills, items and game modes for DotA IM: 4 million registered players, 5,000 to 12,000 players online at once, and 400,000 weekly active users.</li>
+              <li>Read player statistics to find balance problems, then changed values and wrote new features in Lua.</li>
+              <li>Pitched concepts, owned design documents, ran daily stand-ups and coordinated the art team. Worked with platform partners on release timing and advertising placements.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <p class="when">May 2018 – Jan 2019</p>
+          <div>
+            <h3>QA Engineer, Lost Game Studio</h3>
+            <p class="where">Ningbo, China</p>
+            <ul>
+              <li>Tested game updates before release, logging and re-testing defects in Jira and tracing critical bugs to their root cause.</li>
+              <li>Organised internal playtests, collected player feedback and wrote update notes for the player forum.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <p class="when">May 2017 – May 2018</p>
+          <div>
+            <h3>Media Operation Specialist, SIS Ding Technical Training</h3>
+            <p class="where">Zhengzhou, China</p>
+            <ul>
+              <li>Built the company website in HTML and JavaScript and ran its Weibo, WeChat and Toutiao accounts.</li>
+              <li>Collected user data from the web and social media into datasets for analysis, and organised a 60-person technology meetup.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="education" class="section" aria-labelledby="education-h">
+      <h2 id="education-h">Education</h2>
+      <ul class="plain">
+        <li><strong>Bachelor of Information Technology, Games and Entertainment Design</strong><br>University of South Australia, Jan 2022 – Apr 2024</li>
+        <li><strong>Diploma of Information Technology</strong><br>South Australian Institute of Business and Technology, Mar 2020 – Dec 2021</li>
+        <li><strong>Google Data Analytics Professional Certificate</strong><br>Google, Sep 2024</li>
+      </ul>
+    </section>
+
+    <section id="how" class="section" aria-labelledby="how-h">
+      <h2 id="how-h">How this site was built</h2>
+      <div class="prose">
+        <p>I built this site in one evening with Claude Code. Over two years I had written 78 tailored versions of my resume, and they no longer agreed with each other on dates, team sizes or player numbers.</p>
+        <p>The agent extracted the text from every version, grouped the claims, and listed each place where versions conflicted. It then checked those claims against my LinkedIn profile and live mod.io statistics, and asked me to settle the rest. Where a number could not be confirmed, it stayed off the page.</p>
+        <p>The page itself is plain HTML, CSS and a few lines of JavaScript, hosted on GitHub Pages. Every change is in the <a href="https://github.com/teto5527/teto5527.github.io/commits/main">commit history</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Get in touch at <a href="mailto:zhengjian.au@gmail.com">zhengjian.au@gmail.com</a> or on <a href="https://www.linkedin.com/in/zhengjan/">LinkedIn</a>. Also known as Xiaojian Zheng.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
